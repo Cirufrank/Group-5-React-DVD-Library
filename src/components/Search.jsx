@@ -88,7 +88,7 @@ function Search() {
             >
               {searchResults.map((dvd) => {
                 return (
-                  <Link key={dvd.dvdId} to={`/${dvd.dvdId}`}>
+                  <Link key={dvd.id} to={`/${dvd.id}`}>
                     <Dvd
                       // Delete key={contact.contactId}
                       title={dvd.title}
@@ -106,7 +106,7 @@ function Search() {
           <tbody>
             {dvdData.map((dvd) => {
               return (
-                <Link key={dvd.dvdId} to={`/${dvd.dvdId}`}>
+                <Link key={dvd.id} to={`/${dvd.id}`}>
                     <Dvd
                       // Delete key={contact.contactId}
                       title={dvd.title}
