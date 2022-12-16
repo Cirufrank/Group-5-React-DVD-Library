@@ -34,7 +34,7 @@ function Search() {
   }
 
   return (
-    <div>
+    <div className="pl-10 pr-7">
       <header className="flex flex-col md:flex-row justify-between">
         <p className="pl-14 mt-8 md:w-1/3 text-gray-700 font-semibold italic self-center">Welcome, {user.userName}</p>
       <nav className="w-full flex justify-end mt-8">
@@ -52,18 +52,17 @@ function Search() {
         searchValueFunction={filterDvdData}
       />
 
-      <table className="flex justify-center my-4">
+      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5">
       <thead>
-                <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Release Year</th>
-                    <th scope="col">Director</th>
-                    <th scope="col">Rating</th>
-                    <th scope="col">Notes</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-                </thead>
+                    <tr>
+                        <th scope="col" className="text-lg">Title</th>
+                        <th scope="col" className="text-lg">Release Year</th>
+                        <th scope="col" className="text-lg">Director</th>
+                        <th scope="col" className="text-lg">Rating</th>
+                        <th scope="col" className="text-lg">Notes</th>
+                        <th scope="col" className="text-lg">Details</th>
+                    </tr>
+        </thead>
         {userHasSearched ? (
           <>
             <div
@@ -82,22 +81,21 @@ function Search() {
             <tbody
               className={
                 searchResults.length > 0
-                  ? "grid grid-cols-3 gap-2 place-items-center"
+                  ? ""
                   : "hidden"
               }
             >
               {searchResults.map((dvd) => {
                 return (
-                  <Link key={dvd.id} to={`/${dvd.id}`}>
                     <Dvd
-                      // Delete key={contact.contactId}
+                     key={dvd.id}
                       title={dvd.title}
                       releaseYear={dvd.releaseYear}
                       director={dvd.director}
                       rating={dvd.rating}
                       notes={dvd.notes}
+                      detailsUrl={`/${dvd.id}`}
                     />
-                  </Link>
                 );
               })}
             </tbody>
@@ -106,16 +104,16 @@ function Search() {
           <tbody>
             {dvdData.map((dvd) => {
               return (
-                <Link key={dvd.id} to={`/${dvd.id}`}>
-                    <Dvd
-                      // Delete key={contact.contactId}
+                <Dvd
+                     key={dvd.id}
                       title={dvd.title}
                       releaseYear={dvd.releaseYear}
                       director={dvd.director}
                       rating={dvd.rating}
                       notes={dvd.notes}
+                      detailsUrl={`/${dvd.id}`}
                     />
-                  </Link>
+
               );
             })}
           </tbody>

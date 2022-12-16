@@ -14,7 +14,7 @@ function SearchBar({ searchValue, searchValueFunction }) {
           id="searchBar"
           type="text"
           name="searchBar"
-          placeholder="Search Contacts"
+          placeholder="Search DVDs"
           className="py-2 flex-auto  focus:outline-none"
           value={searchValue}
           onChange={(e) => searchValueFunction(e.target.value)}

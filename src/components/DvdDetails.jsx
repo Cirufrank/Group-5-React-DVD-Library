@@ -82,7 +82,7 @@ function DvdDetails() {
       ) : (
         <div className="flex flex-col items-center my-16 mx-2 md:w-1/2 lg:w-2/5 md:mx-auto shadow-xl bg-gray-50 rounded  pt-8 p-4 px-8">
           <div className="flex flex-col items-center ">
-            {/* Start of Head shot and Name */}
+            {/* Start of DVD title */}
             <div className="flex flex-col justify-center w-64 h-64 bg-gray-300 border-gray-300 rounded-full border-2 shadow-xl text-center p-8 -m-32">
 
               {!editing ? (
@@ -102,30 +102,30 @@ function DvdDetails() {
                 </form>
               )}
             </div>
-            {/* End of Head shot and Name */}
+            {/* End of DVD title */}
 
-            {/* Remaining contact fields */}
+            {/* Remaining DVD fields */}
 
             {!editing ? (
               <div className="grid grid-cols-2 gap-3 items-center justify-items-center mt-32 pt-8">
-                {/* Company */}
+                {/* Release Year */}
                 <h2 className="font-bold text-xl ">Release Year:</h2>
                 <p className="font-light text-xl p-1 rounded ">
                   {updateDvdsData.releaseYear}
                 </p>
 
-                {/*Phone Number  */}
-                <h2 className="font-bold text-xl">Directorr:</h2>
+                {/*Director  */}
+                <h2 className="font-bold text-xl">Director:</h2>
                 <p className="font-light text-xl p-1 rounded ">
                   {updateDvdsData.director}
                 </p>
 
-                {/* Email */}
+                {/* Rating */}
                 <h2 className="font-bold text-xl">Rating:</h2>
                 <p className="font-light text-xl p-1 rounded">
                   {updateDvdsData.rating}
                 </p>
-                {/* Email */}
+                {/* Notes */}
                 <h2 className="font-bold text-xl">Notes:</h2>
                 <p className="font-light text-xl p-1 rounded">
                   {updateDvdsData.notes}
@@ -133,6 +133,7 @@ function DvdDetails() {
               </div>
             ) : (
               <form className="grid grid-cols-2 gap-3 items-center justify-items-center mt-32 pt-8">
+                {/* Release Year */}
                 <label htmlFor="releaseYear" className="font-bold text-xl">
                   Release Year:
                 </label>
@@ -143,6 +144,7 @@ function DvdDetails() {
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
+                {/* Director */}
                 <label htmlFor="director" className="font-bold text-xl">
                   Director:
                 </label>
@@ -153,6 +155,7 @@ function DvdDetails() {
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
+                {/* Rating */}
                 <label htmlFor="rating" className="font-bold text-xl">
                   Rating:
                 </label>
@@ -163,6 +166,7 @@ function DvdDetails() {
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
+                {/* Notes */}
                 <label htmlFor="notes" className="font-bold text-xl">
                   Notes:
                 </label>
