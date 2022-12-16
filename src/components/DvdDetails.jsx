@@ -1,29 +1,27 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
-import { formatPhoneNumber } from "../utils/formatPhoneNumber";
-import contactImgUrl from "url:../images/baseline_perm_identity_black_48dp.png";
 
-function ContactDetails() {
-  let { contactId } = useParams();
+function DvdDetails() {
+  let { dvdId } = useParams();
   var navigate = useNavigate();
-  let url = `http://contactlist.us-east-1.elasticbeanstalk.com/contact/${contactId}`;
+  let url = `http://dvd-library.us-east-1.elasticbeanstalk.com/dvd/${dvdId}`;
   const [data, error] = useFetch(url);
-  const [updateContactsData, setUpdateContactsData] = useState(data);
+  const [updateDvdsData, setUpdateDvdsData] = useState(data);
   const [editing, setEditing] = useState(false);
 
   useEffect(() => {
-    setUpdateContactsData(data);
+    setUpdateDvdsData(data);
   }, [data]);
 
   function handleUpdatingValue(e) {
-    setUpdateContactsData({
-      ...updateContactsData,
+    setUpdateDvdsData({
+      ...updateDvdsData,
       [e.target.id]: e.target.value,
     });
   }
 
-  function updateContact() {
+  function updateDvd() {
     if (editing === true) {
       setEditing(!editing);
 
@@ -32,14 +30,14 @@ function ContactDetails() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(updateContactsData),
+        body: JSON.stringify(updateDvdsData),
       });
     } else {
       setEditing(!editing);
     }
   }
 
-  async function deleteContact() {
+  async function deleteDvd() {
     await fetch(url, {
       method: "DELETE",
     });
@@ -86,36 +84,18 @@ function ContactDetails() {
           <div className="flex flex-col items-center ">
             {/* Start of Head shot and Name */}
             <div className="flex flex-col justify-center w-64 h-64 bg-gray-300 border-gray-300 rounded-full border-2 shadow-xl text-center p-8 -m-32">
-              <figure>
-                <img
-                  className="m-auto"
-                  src={updateContactsData.imgSrc || contactImgUrl}
-                  alt="the contact's head shot"
-                />
-              </figure>
 
               {!editing ? (
-                <h1 className="text-2xl font-semibold">{`${updateContactsData.firstName} ${updateContactsData.lastName}`}</h1>
+                <h1 className="text-2xl font-semibold">{updateDvdsData.title}</h1>
               ) : (
                 <form className="flex justify-around ">
-                  <label htmlFor="firstName" className="sr-only">
-                    First Name
+                  <label htmlFor="title" className="sr-only">
+                    Title
                   </label>
                   <input
                     type="text"
-                    id="firstName"
-                    placeholder={updateContactsData.firstName}
-                    onChange={handleUpdatingValue}
-                    className="font-light text-xl w-24 mr-2 p-1 rounded"
-                  />
-
-                  <label htmlFor="lastName" className="sr-only">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    placeholder={updateContactsData.lastName}
+                    id="title"
+                    placeholder={updateDvdsData.title}
                     onChange={handleUpdatingValue}
                     className="font-light text-xl w-24 mr-2 p-1 rounded"
                   />
@@ -129,52 +109,67 @@ function ContactDetails() {
             {!editing ? (
               <div className="grid grid-cols-2 gap-3 items-center justify-items-center mt-32 pt-8">
                 {/* Company */}
-                <h2 className="font-bold text-xl ">Company:</h2>
+                <h2 className="font-bold text-xl ">Release Year:</h2>
                 <p className="font-light text-xl p-1 rounded ">
-                  {updateContactsData.company}
+                  {updateDvdsData.releaseYear}
                 </p>
 
                 {/*Phone Number  */}
-                <h2 className="font-bold text-xl">Phone Number:</h2>
+                <h2 className="font-bold text-xl">Directorr:</h2>
                 <p className="font-light text-xl p-1 rounded ">
-                  {formatPhoneNumber(updateContactsData.phone)}
+                  {updateDvdsData.director}
                 </p>
 
                 {/* Email */}
-                <h2 className="font-bold text-xl">Email:</h2>
+                <h2 className="font-bold text-xl">Rating:</h2>
                 <p className="font-light text-xl p-1 rounded">
-                  {updateContactsData.email}
+                  {updateDvdsData.rating}
+                </p>
+                {/* Email */}
+                <h2 className="font-bold text-xl">Notes:</h2>
+                <p className="font-light text-xl p-1 rounded">
+                  {updateDvdsData.notes}
                 </p>
               </div>
             ) : (
               <form className="grid grid-cols-2 gap-3 items-center justify-items-center mt-32 pt-8">
-                <label htmlFor="company" className="font-bold text-xl">
-                  Company:
+                <label htmlFor="releaseYear" className="font-bold text-xl">
+                  Release Year:
                 </label>
                 <input
-                  type="text"
-                  id="company"
-                  placeholder={updateContactsData.company}
+                  type="number"
+                  id="releaseYear"
+                  placeholder={updateDvdsData.releaseYear}
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
-                <label htmlFor="phone" className="font-bold text-xl">
-                  Phone Number:
+                <label htmlFor="director" className="font-bold text-xl">
+                  Director:
                 </label>
                 <input
                   type="text"
-                  id="phone"
-                  placeholder={formatPhoneNumber(updateContactsData.phone)}
+                  id="director"
+                  placeholder={updateDvdsData.director}
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
-                <label htmlFor="email" className="font-bold text-xl">
-                  Email:
+                <label htmlFor="rating" className="font-bold text-xl">
+                  Rating:
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  placeholder={updateContactsData.email}
+                  type="text"
+                  id="rating"
+                  placeholder={updateDvdsData.rating}
+                  onChange={handleUpdatingValue}
+                  className="font-light text-xl"
+                />
+                <label htmlFor="notes" className="font-bold text-xl">
+                  Notes:
+                </label>
+                <input
+                  type="text"
+                  id="notes"
+                  placeholder={updateDvdsData.notes}
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
@@ -187,7 +182,7 @@ function ContactDetails() {
             <div className="flex justify-around my-6 w-2/5 mx-auto pt-2 space-x-4">
               <button
                 className="bg-blue-600 rounded-full py-4 px-8 text-white hover:bg-gray-50 hover:border-blue-400  hover:text-blue-400 hover:shadow-2xl border-2"
-                onClick={updateContact}
+                onClick={updateDvd}
               >
                 {!editing ? "Edit" : "Save"}
               </button>
@@ -195,7 +190,7 @@ function ContactDetails() {
               {/* Delete Button */}
               <button
                 className="bg-red-600 rounded-full py-4 px-8 text-white hover:bg-gray-50 hover:border-red-400  hover:text-red-400 hover:shadow-2xl border-2"
-                onClick={deleteContact}
+                onClick={deleteDvd}
               >
                 Delete
               </button>
@@ -207,4 +202,4 @@ function ContactDetails() {
   );
 }
 
-export default ContactDetails;
+export default DvdDetails;
