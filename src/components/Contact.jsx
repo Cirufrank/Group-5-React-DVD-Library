@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-import contactImgUrl from "url:../images/baseline_perm_identity_black_48dp.png";
+import contactImgUrl from "url:../images/dvd_image.jpg";
 
 function Contact({ imgSrc = contactImgUrl, name, telNumber, email }) {
   return (
@@ -8,7 +8,7 @@ function Contact({ imgSrc = contactImgUrl, name, telNumber, email }) {
         <img
           className="w-24 h-24 rounded-full"
           src={imgSrc}
-          alt="the contact's headshot"
+          alt="dvd disc"
         />
       </div>
       <h1 className="text-lg font-semibold">{name}</h1>

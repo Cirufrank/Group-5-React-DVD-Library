@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import { formatPhoneNumber } from "../utils/formatPhoneNumber";
-import contactImgUrl from "url:../images/baseline_perm_identity_black_48dp.png";
+import contactImgUrl from "url:../images/dvd_image.jpg";
 
 function ContactDetails() {
   let { contactId } = useParams();
