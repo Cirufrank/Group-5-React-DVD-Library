@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Search from "./Search";
-import CreateContact from "./CreateContact";
-import ContactDetails from "./ContactDetails";
+import CreateDvd from "./CreateDvd";
+import DvdDetails from "./DvdDetails";
 import ErrorBoundary from "./ErrorBoundary";
 import {UserProvider} from "../context/UserContext";
 
@@ -13,14 +13,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Search />} />
         <Route
-          path="/:contactId"
+          path="/:dvdId"
           element={
             <ErrorBoundary>
-              <ContactDetails />
+              <DvdDetails />
             </ErrorBoundary>
           }
         />
-        <Route path="/create" element={<CreateContact />} />
+        <Route path="/create" element={<CreateDvd />} />
       </Routes>
       </UserProvider>
     </>

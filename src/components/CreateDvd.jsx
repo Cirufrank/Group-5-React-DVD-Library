@@ -1,28 +1,27 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { formatPhoneNumber } from "../utils/formatPhoneNumber";
 
-function CreateContact() {
+function CreateDvd() {
   var navigate = useNavigate();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [company, setCompany] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [title, setTitle] = useState("");
+  const [releaseYear, setReleaseYear] = useState("");
+  const [director, setDirector] = useState("");
+  const [rating, setRating] = useState("");
+  const [notes, setNotes] = useState("");
 
-  async function addContact(event) {
+  async function addDvd(event) {
     event.preventDefault();
-    await fetch("http://contactlist.us-east-1.elasticbeanstalk.com/contact", {
+    await fetch("http://dvd-library.us-east-1.elasticbeanstalk.com/dvd", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        company: company,
-        phone: formatPhoneNumber(phone.replace(/[^A-Za-z0-9]+/g, "")),
-        email: email,
+        title: title,
+        releaseYear: parseInt(releaseYear),
+        director: director,
+        rating: rating,
+        notes: notes,
       }),
     });
 
@@ -49,26 +48,26 @@ function CreateContact() {
         </button>
       </nav>
       <h1 className="w-full bg-green-600 text-gray-100 text-center py-4 text-4xl uppercase tracking-wide mt-20 md:w-1/2 mx-auto rounded-t-md">
-        Add New Contact
+        Add New DVD
       </h1>
       <form
         className="grid grid-cols-2 md:w-1/2 mx-auto shadow-2xl rounded-md p-8"
-        onSubmit={(e) => addContact(e)}
+        onSubmit={(e) => addDvd(e)}
       >
         {/* First Name */}
         <div className="w-full px-3 mb-6 md:mb-4">
           <label
-            htmlFor="firstName"
+            htmlFor="title"
             className="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2"
           >
-            <strong className="text-red-400">*</strong>First Name:
+            <strong className="text-red-400">*</strong>Title:
           </label>
 
           <input
             type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
@@ -77,17 +76,17 @@ function CreateContact() {
         {/* Last Name */}
         <div className="w-full px-3">
           <label
-            htmlFor="lastName"
+            htmlFor="releaseYear"
             className="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2"
           >
-            <strong className="text-red-400">*</strong>Last Name:
+            <strong className="text-red-400">*</strong>Release Year:
           </label>
 
           <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            type="number"
+            id="releaseYear"
+            value={releaseYear}
+            onChange={(e) => setReleaseYear(e.target.value)}
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
@@ -96,60 +95,60 @@ function CreateContact() {
         {/* Company */}
         <div className="w-full px-3 col-span-full mb-6 md:mb-4">
           <label
-            htmlFor="company"
+            htmlFor="director"
             className="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2"
           >
-            Company:
+            Director:
           </label>
           <input
             type="text"
-            id="company"
+            id="director"
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}
+            value={director}
+            onChange={(e) => setDirector(e.target.value)}
           />
         </div>
         {/* Phone Number */}
         <div className="w-full px-3 col-span-full mb-6 md:mb-4">
           <label
-            htmlFor="phone"
+            htmlFor="rating"
             className="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2"
           >
-            Phone Number:
+            Rating:
           </label>
           <input
-            type="tel"
-            id="phone"
+            type="text"
+            id="rating"
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            value={formatPhoneNumber(phone)}
-            onChange={(e) => setPhone(e.target.value)}
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
           />
         </div>
         {/* Email */}
         <div className="w-full px-3 col-span-full mb-6 md:mb-4">
           <label
-            htmlFor="email"
+            htmlFor="notes"
             className="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2"
           >
-            Email:
+            Notes:
           </label>
           <input
-            type="email"
-            id="email"
+            type="notes"
+            id="notes"
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
           />
         </div>
         <button
           type="submit"
           className="col-span-full text-lg border-2 text-gray-100 border-green-600 bg-green-600 hover:bg-gray-50 hover:border-green-600  hover:text-green-600 hover:shadow-2xl  lg:w-2/5  justify-self-center rounded-full py-3 px-4 shadow-lg"
         >
-          Add Contact
+          Add DVD
         </button>
       </form>
     </>
   );
 }
 
-export default CreateContact;
+export default CreateDvd;
