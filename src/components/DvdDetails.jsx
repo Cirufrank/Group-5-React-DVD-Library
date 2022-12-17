@@ -95,7 +95,7 @@ function DvdDetails() {
                   <input
                     type="text"
                     id="title"
-                    placeholder={updateDvdsData.title}
+                    value={updateDvdsData.title}
                     onChange={handleUpdatingValue}
                     className="font-light text-xl w-24 mr-2 p-1 rounded"
                   />
@@ -140,7 +140,7 @@ function DvdDetails() {
                 <input
                   type="number"
                   id="releaseYear"
-                  placeholder={updateDvdsData.releaseYear}
+                  value={updateDvdsData.releaseYear}
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
@@ -151,7 +151,7 @@ function DvdDetails() {
                 <input
                   type="text"
                   id="director"
-                  placeholder={updateDvdsData.director}
+                  value={updateDvdsData.director}
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
@@ -162,7 +162,7 @@ function DvdDetails() {
                 <input
                   type="text"
                   id="rating"
-                  placeholder={updateDvdsData.rating}
+                  value={updateDvdsData.rating}
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
@@ -173,7 +173,7 @@ function DvdDetails() {
                 <input
                   type="text"
                   id="notes"
-                  placeholder={updateDvdsData.notes}
+                  value={updateDvdsData.notes}
                   onChange={handleUpdatingValue}
                   className="font-light text-xl"
                 />
