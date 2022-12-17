@@ -5,7 +5,7 @@ export const UserContext = createContext({userId: 1, userName: "guest"});
 export function UserProvider({children}) {
     const userInfo = {
         userId: 1,
-        userName: "Mary Jackson"
+        userName: "Anonymous User"
     };
 
     return <UserContext.Provider value={userInfo}>{children}</UserContext.Provider>
