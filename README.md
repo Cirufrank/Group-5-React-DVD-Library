@@ -1,4 +1,4 @@
-# Group-5-React-DVD-Library
+# React DVD Library SPA
 ![](https://media.giphy.com/media/jqwzq0LoZOfLqqJZ0b/giphy.gif)
 
 DVDs.. a thing of the past... a forgotten piece of technology that's soon to fade into the digital ether. Is what they all said. But you.. you're not them... NO... you're a blue ray connoisseur. You enjoy the classics and respect the intricacies of the digital versatile disc. This application was made for you! You have a beautiful collection of DVDs, but alas, you've been craving a quick, and responsive web application to help you keep track of them, to share with, to write about the DVDs that made you laugh, cry, see the world in a new light. Additionally, you've been in search of other affecionados and would love to show your notes and impactful DVDs with the world, while also being able to view any DVDs loved by others. Well look no further my friend. The DVD library CRUD app is here.
