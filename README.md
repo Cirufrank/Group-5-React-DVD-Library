@@ -48,6 +48,6 @@ Additionally, through use of a RESTful DVD library API in coorditation with Java
   <li>Learned how to create a React application from scratch and without a create-react-app generated starter as well as how to use Parcel as the application's bundler instead of webpack</li>
   <li>Learned how to use Lucidchart to plan and organize components before implementing the application, as well as how to plan out the application's creation</li>
   </br>
-  This project was a ton of fun to create, while getting mroe intimate knowledge of React. Thanks for stopping by, enjoy the application, and don't forget to celerate your accomplishments!
+  This project was a ton of fun to create, while getting more intimate knowledge of React. Thanks for stopping by, enjoy the application, and don't forget to celerate your accomplishments!
     
 
